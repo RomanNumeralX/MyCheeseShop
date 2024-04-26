@@ -4,8 +4,8 @@
 @inject CheeseProvider CheeseProvider
 
 <div class="card-group">
-  <div class="card gy-3">
-    <img src=@Cheese.ImageUrl class="card-img-top" alt="...">
+    <div class="card gy-3 m-1">
+        <img src="imgs/@Cheese.ImageUrl" class="card-img-top" alt="@Cheese.Name">
     <div class="card-body">
       <h5 class="card-title">@Cheese.Name</h5>
       <p class="card-text">@Cheese.Description</p>
@@ -13,6 +13,7 @@
     </div>
   </div>
 </div>
+
 <EditForm Model="quantity" OnSubmit="AddToCart">
 
 </EditForm>

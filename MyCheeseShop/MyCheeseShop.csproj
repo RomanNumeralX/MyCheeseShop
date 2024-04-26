@@ -16,6 +16,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\imgs\Blue Cheese.png" />
+    <None Include="wwwroot\imgs\Brie.png" />
+    <None Include="wwwroot\imgs\Camembert.png" />
+    <None Include="wwwroot\imgs\Cheddar.png" />
+    <None Include="wwwroot\imgs\Colby.png" />
+    <None Include="wwwroot\imgs\Edam.png" />
+    <None Include="wwwroot\imgs\Feta.png" />
+    <None Include="wwwroot\imgs\Gorgonzola.png" />
+    <None Include="wwwroot\imgs\Gouda.png" />
+    <None Include="wwwroot\imgs\Gruyere.png" />
+    <None Include="wwwroot\imgs\Havarti.png" />
+    <None Include="wwwroot\imgs\Monterey Jack.png" />
+    <None Include="wwwroot\imgs\Mozzarella.png" />
+    <None Include="wwwroot\imgs\Muenster.png" />
+    <None Include="wwwroot\imgs\Parmesan.png" />
+    <None Include="wwwroot\imgs\Pepper Jack.png" />
+    <None Include="wwwroot\imgs\Provolone.png" />
+    <None Include="wwwroot\imgs\Ricotta Cheese.png" />
+    <None Include="wwwroot\imgs\Roquefort.png" />
+    <None Include="wwwroot\imgs\Swiss.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\database\" />
   </ItemGroup>
 
