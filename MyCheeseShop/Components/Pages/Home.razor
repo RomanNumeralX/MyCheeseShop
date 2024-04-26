@@ -1,6 +1,45 @@
 ﻿@page "/"
+@using MyCheeseShop.Model
+@using MyCheeseShop.Components
+@using MyCheeseShop.Context
+@inject CheeseProvider CheeseProvider
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+
+
+@if (cheeses is null)
+{
+    <p>Loading...</p>
+}
+
+else if (!cheeses.Any())
+{
+    <p>No cheeses found.</p>
+}
+
+<div class="row">
+    @foreach (var cheese in cheeses)
+    {
+        <div class="col-md-3">
+            <StoreItem Cheese="cheese" />
+        </div>
+    }
+</div>
+
+@if (!cheeses.Any())
+{
+    <p>No Cheeses found.</p>
+    
+}
+
+@code {
+    private IEnumerable<Cheese> cheeses;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cheeses = await CheeseProvider.GetAllCheesesAsync();
+    }
+}
+
 

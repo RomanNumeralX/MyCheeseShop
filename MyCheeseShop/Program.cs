@@ -35,6 +35,8 @@ builder.Services.AddIdentityCore<User>()
 
 builder.Services.AddScoped<DatabaseSeeder>();
 
+builder.Services.AddScoped<CheeseProvider>();
+
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
