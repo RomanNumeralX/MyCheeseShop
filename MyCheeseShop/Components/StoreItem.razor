@@ -1,7 +1,11 @@
 ﻿@using MyCheeseShop.Model
 @using MyCheeseShop.Components
 @using MyCheeseShop.Context
+@using Model
 @inject CheeseProvider CheeseProvider
+@inject ShoppingCart ShoppingCart
+@inject ProtectedSessionStorage ProtectedSessionStore
+
 
 <div class="card-group">
     <div class="card m-1">
@@ -29,7 +33,13 @@
           <option value>500g</option>
          </select>
 
-         <button class="btn btn-primary" type="submit">Add to cart</button>
+                <button class="btn btn-primary position-relative" type="submit" onclick="addToCart()">
+                    Add to cart
+                    <span id="amountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                </button>
 
       </div>
 
@@ -51,7 +61,8 @@
 
     public async Task AddToCart()
     {
-        
+        ShoppingCart.AddItem(Cheese, quantity);
+        await ProtectedSessionStore.SetAsync("cart", ShoppingCart.GetItems());
     }
 
 }
