@@ -33,7 +33,7 @@
     <None Include="wwwroot\imgs\Parmesan.png" />
     <None Include="wwwroot\imgs\Pepper Jack.png" />
     <None Include="wwwroot\imgs\Provolone.png" />
-    <None Include="wwwroot\imgs\Ricotta Cheese.png" />
+    <None Include="wwwroot\imgs\Ricotta.png" />
     <None Include="wwwroot\imgs\Roquefort.png" />
     <None Include="wwwroot\imgs\Swiss.png" />
   </ItemGroup>
