@@ -5,15 +5,14 @@
 
 <div class="card-group">
   <div class="card gy-3">
-    <img src="..." class="card-img-top" alt="...">
+    <img src=@Cheese.ImageUrl class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">@Cheese.Name</h5>
-      < class="card-text">@Cheese.Description</>
+      <p class="card-text">@Cheese.Description</p>
       <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
-
 <EditForm Model="quantity" OnSubmit="AddToCart">
 
 </EditForm>

@@ -56,7 +56,7 @@ namespace MyCheeseShop.Context
             return
             [
                 new Cheese { Name = "Cheddar", Type = "Hard", Description = "Sharp and tangy, with a rich, mature flavor profile and a satisfyingly crumbly texture.", Strength = "Medium", Price = "£10.99" },
-                new Cheese { Name = "Brie", Type = "Soft", Description = "Creamy and buttery, with a delicate, melt-in-your-mouth texture and a subtle hint of earthiness.", Strength = "Mild", Price = "£12.99" },
+                new Cheese { Name = "Brie", Type = "Soft", Description = "Creamy and buttery, with a delicate, melt-in-your-mouth texture and a subtle hint of earthiness.", Strength = "Mild", Price = "£12.99", ImageUrl = $"..\\Components\\Cheese Images\\Brie.png"},
                 new Cheese { Name = "Gouda", Type = "Semi-hard", Description = "Smooth and nutty, boasting a subtle sweetness and a creamy texture with delightful caramel notes.", Strength = "Medium", Price = "£9.99" },
                 new Cheese { Name = "Blue Cheese", Type = "Semi-soft", Description = "Strong and pungent, characterized by its distinctive blue veins and bold, complex flavor profile with a tangy finish.", Strength = "Strong", Price = "£14.99" },
                 new Cheese { Name = "Feta", Type = "Soft", Description = "Tangy and crumbly, with a briny kick and a creamy texture that enhances salads and Mediterranean dishes.", Strength = "Mild", Price = "£8.99" },
@@ -67,7 +67,7 @@ namespace MyCheeseShop.Context
                 new Cheese { Name = "Havarti", Type = "Semi-soft", Description = "Buttery and mild, with a creamy texture and subtle tanginess, ideal for snacking or melting in hot dishes.", Strength = "Mild", Price = "£10.49" },
                 new Cheese { Name = "Gorgonzola", Type = "Semi-soft", Description = "Sharp and creamy, characterized by its intense flavor profile and luxurious, creamy texture with a spicy finish.", Strength = "Strong", Price = "£16.49" },
                 new Cheese { Name = "Monterey Jack", Type = "Semi-soft", Description = "Mild and creamy, versatile and melt-in-your-mouth, perfect for adding a touch of richness to any dish.", Strength = "Mild", Price = "£8.49" },
-            new Cheese { Name = "Provolone", Type = "Semi-hard", Description = "Sharp and tangy, with a distinctive flavor and smooth texture, ideal for sandwiches and cheese platters.", Strength = "Medium", Price = "£10.99" },
+                new Cheese { Name = "Provolone", Type = "Semi-hard", Description = "Sharp and tangy, with a distinctive flavor and smooth texture, ideal for sandwiches and cheese platters.", Strength = "Medium", Price = "£10.99" },
                 new Cheese { Name = "Roquefort", Type = "Semi-soft", Description = "Intense and salty, with bold blue veining and a rich, creamy texture that leaves a lingering, savory taste.", Strength = "Strong", Price = "£17.99" },
                 new Cheese { Name = "Gruyere", Type = "Hard", Description = "Rich and creamy, with a nutty flavor profile and a smooth, dense texture, perfect for fondue or gratins.", Strength = "Medium", Price = "£14.49" },
                 new Cheese { Name = "Colby", Type = "Semi-hard", Description = "Mild and creamy, with a gentle flavor and smooth texture, ideal for snacking or melting in sandwiches.", Strength = "Mild", Price = "£9.49" },
