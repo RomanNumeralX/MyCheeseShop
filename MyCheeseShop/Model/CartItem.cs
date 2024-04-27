@@ -1,6 +1,4 @@
 ﻿namespace MyCheeseShop.Model
-
-
 {
     public class CartItem
     {
@@ -8,7 +6,6 @@
 
         public int Quantity { get; set; }
 
-        public decimal Total => Cheese.Price * Quantity;
-
+        public decimal Total => (decimal)(Cheese.Price * Quantity);
     }
 }

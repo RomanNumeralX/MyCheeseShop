@@ -1,0 +1,32 @@
+﻿@page "/cart"
+@using MyCheeseShop.Model
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject ShoppingCart ShoppingCart
+@inject NavigationManager NavigationManager
+
+
+<a @onclick="GoToCheckout" class="btn btn-outline-primary"> CHECKOUT </a>
+<a @onclick="GoToStore" class="btn btn-outline-primary"> TO STORE </a>
+
+
+@code {
+    [Parameter]
+    public bool IsEditable { get; set; } = false;
+
+    private async Task CartUpdated()
+    {
+        StateHasChanged();
+        await ProtectedSessionStore.SetAsync("cart", ShoppingCart.GetItems());
+    }
+   
+
+    private void GoToStore()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    private void GoToCheckout()
+    {
+        NavigationManager.NavigateTo("/checkout");
+    }
+}

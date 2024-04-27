@@ -20,20 +20,18 @@
        <span class="badge text-bg-danger">@Cheese.Price</span>
      </h5>
 
-
       <p class="card-text">@Cheese.Description</p>
 
-      <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <select id="grams" class="form-select-sm m-2 p-2" style="width: 100px; height: 40px" aria-label="Default select example">
+                    <option value="100">100g</option>
+                    <option value="200">200g</option>
+                    <option value="300">300g</option>
+                    <option value="400">400g</option>
+                    <option value="500">500g</option>
+                </select>
 
-        <select class="form-select-sm m-2 p-2" style="width: 100px; height: 40px" aria-label="Default select example">
-          <option selected>100g</option>
-          <option value>200g</option>
-          <option value>300g</option>
-          <option value>400g</option>
-          <option value>500g</option>
-         </select>
-
-                <button class="btn btn-primary position-relative" type="submit" onclick="addToCart()">
+                <button class="btn btn-primary position-relative" type="submit" onclick="addToCart(); gramsCalc()">
                     Add to cart
                     <span id="amountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                         0
@@ -41,7 +39,18 @@
                     </span>
                 </button>
 
-      </div>
+                <script>
+                    var total_grams = 0;
+
+                    function gramsCalc() {
+                        var grams = parseInt(document.getElementById('grams').value);
+                        total_grams += grams;
+                        document.getElementById('amountBadge').innerText = total_grams;
+                    }
+                </script>
+
+            </div>
+
 
       @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
     </div>
