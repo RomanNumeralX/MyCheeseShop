@@ -6,20 +6,35 @@
 @inject NavigationManager NavigationManager
 
 
-<a @onclick="GoToCheckout" class="btn btn-outline-primary"> CHECKOUT </a>
+<a @onclick="GoToCheckout" class="btn btn-outline-primary"> Checkout </a>
 <a @onclick="GoToStore" class="btn btn-outline-primary"> TO STORE </a>
+
+@foreach (var item in ShoppingCart.GetItems())
+{
+    var Cheese = item.Cheese;
+    var Quantity = item.Quantity;
+    
+    <p>@Cheese.Name</p>
+
+    <p>@Quantity</p>
+}
+
 
 
 @code {
     [Parameter]
     public bool IsEditable { get; set; } = false;
 
+    protected override void OnInitialized()
+    {
+        ShoppingCart.OnCartUpdated += async () => await CartUpdated();
+    }
+
     private async Task CartUpdated()
     {
         StateHasChanged();
         await ProtectedSessionStore.SetAsync("cart", ShoppingCart.GetItems());
     }
-   
 
     private void GoToStore()
     {
@@ -29,4 +44,6 @@
     {
         NavigationManager.NavigateTo("/checkout");
     }
+
+
 }

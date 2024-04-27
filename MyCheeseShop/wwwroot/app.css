@@ -28,10 +28,71 @@ h1:focus {
     border-color: #929292;
 }
 
-body {
-    background-color : black;
+.custom-primary {
+    background-color: #847d73; /* Dark beige with a touch of gray - hard */
+    color: #ffffff; /* White text color */
 }
 
-h1 {
-    color : red;
+.custom-semi-hard {
+    background-color: #a68e77; /* Dark beige with a hint of brown - semi-hard */
+    color: #ffffff; /* White text color */
 }
+
+.custom-success {
+    background-color: #b5a588; /* Light beige with a hint of brown - semisoft */
+    color: #ffffff; /* White text color */
+}
+
+.custom-info {
+    background-color: #e0d3ba; /* Light beige with a touch of cream - soft */
+    color: #ffffff; /* White text color */
+}
+
+.custom-warning {
+    background-color: #c59c84; /* Dark beige with a touch of red - strong */
+    color: #ffffff; /* White text color */
+}
+
+.custom-danger {
+    background-color: #d3b88f; /* Light beige with a hint of orange - medium */
+    color: #ffffff; /* White text color */
+}
+
+.custom-secondary {
+    background-color: #e7d6b5; /* Light beige with a touch of yellow - mild */
+    color: #ffffff; /* White text color */
+}
+
+
+.custom-add-to-cart {
+    width: 100px; /* Set width to 100px */
+    height: 40px; /* Set height to 40px */
+    background-color: #007bff; /* Blue color for the button */
+    color: #ffffff; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add some border-radius for rounded corners */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.custom-add-to-cart:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+.custom-price {
+    background-color: #dc3545;
+    color : black;
+}
+
+.text-black {
+    --bs-text-opacity: 1;
+    color: black;
+}
+
+.text-badges-dark-grey {
+    --bs-text-opacity: 1;
+    color: rgb(51, 51, 51);
+}
+
+

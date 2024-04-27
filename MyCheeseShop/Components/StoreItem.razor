@@ -7,17 +7,52 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
 
+<head>
+    <!-- Other head content -->
+    <link href="~/app.css" rel="stylesheet" />
+</head>
+
+
 <div class="card-group">
-    <div class="card m-1">
+    <div class="card m-1" style="background-color:#D2B48C;">
         <img src="imgs/@Cheese.ImageUrl" class="card-img-top p-2" alt="@Cheese.Name" style="border-radius:15px;">
         <div class="card-body">
             <h5>
-                <span class="badge text-bg-primary">@Cheese.Type</span>
-                <span class="badge text-bg-success">@Cheese.Strength</span>
+
+                @if (Cheese.Type == "Hard")
+                {
+                    <span class="badge custom-primary text-badges-dark-grey" style="margin-right: 5px;">@Cheese.Type</span>
+                }
+                else if (Cheese.Type == "Semi-hard")
+                {
+                    <span class="badge custom-semi-hard text-badges-dark-grey" style="margin-right: 5px;">@Cheese.Type</span>
+                }
+                else if (Cheese.Type == "Semi-soft")
+                {
+                    <span class="badge custom-success text-badges-dark-grey" style="margin-right: 5px;">@Cheese.Type</span>
+                }
+                else if (Cheese.Type == "Soft")
+                {
+                    <span class="badge custom-info text-badges-dark-grey" style="margin-right: 5px;">@Cheese.Type</span>
+                }
+
+                @if (Cheese.Strength == "Strong")
+                {
+                    <span class="badge custom-warning text-badges-dark-grey" style="margin-left: 5px;">@Cheese.Strength</span>
+                }
+                else if (Cheese.Strength == "Medium")
+                {
+                    <span class="badge custom-danger text-badges-dark-grey" style="margin-left: 5px;">@Cheese.Strength</span>
+                }
+                else if (Cheese.Strength == "Mild")
+                {
+                    <span class="badge custom-secondary text-badges-dark-grey" style="margin-left: 5px;">@Cheese.Strength</span>
+                }
+
             </h5>
             <h5 class="card-title d-flex justify-content-between align-items-center">
                 @Cheese.Name
-                <span class="badge text-bg-danger">@Cheese.Price</span>
+                <span class="badge custom-price">@Cheese.Price</span>
             </h5>
 
             <p class="card-text">@Cheese.Description</p>
@@ -33,7 +68,7 @@
                         </InputSelect>
                     </div>
                     <div class="col-lg-6 col-12 mt-lg-0 mt-1">
-                        <button class="btn btn-primary position-relative w-100">
+                        <button class="custom-add-to-cart position-relative w-100">
                             Add to cart
                             @if (ShoppingCart.GetQuantity(Cheese) > 0)
                             {

@@ -12,13 +12,15 @@
 </head>
     <h1>Cheese Shop</h1>
 
-    <a @onclick="GoToCart" class="btn btn-outline-dark"> Check Cart! </a>
+    <a @onclick="GoToCart" class="btn btn-outline-dark mb-2"> Check Cart! </a>
+
+  
 
     <div>
-        <input type="text" class="form-control" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+        <input type="text" class="form-control mb-2" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
     </div>
 
-<body>
+<body style="background-color:#F5F5DC;">
 
     @if (cheeses is null)
     {
