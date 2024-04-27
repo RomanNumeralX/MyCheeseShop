@@ -22,6 +22,13 @@ namespace MyCheeseShop.Model
            OnCartUpdated?.Invoke(); 
         }
 
+        public int GetQuantity(Cheese cheese)
+        {
+            // return the quantity of the cheese in the cart
+            var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
+            return item?.Quantity ?? 0;
+        }
+
         public IEnumerable<CartItem> GetItems()
         {
             return _items; 

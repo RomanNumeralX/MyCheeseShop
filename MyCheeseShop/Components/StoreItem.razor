@@ -10,52 +10,46 @@
 <div class="card-group">
     <div class="card m-1">
         <img src="imgs/@Cheese.ImageUrl" class="card-img-top p-2" alt="@Cheese.Name" style="border-radius:15px;">
-    <div class="card-body">
-     <h5>
-       <span class="badge text-bg-primary">@Cheese.Type</span>
-       <span class="badge text-bg-success">@Cheese.Strength</span>
-     </h5>
-     <h5 class="card-title d-flex justify-content-between align-items-center">
-       @Cheese.Name
-       <span class="badge text-bg-danger">@Cheese.Price</span>
-     </h5>
+        <div class="card-body">
+            <h5>
+                <span class="badge text-bg-primary">@Cheese.Type</span>
+                <span class="badge text-bg-success">@Cheese.Strength</span>
+            </h5>
+            <h5 class="card-title d-flex justify-content-between align-items-center">
+                @Cheese.Name
+                <span class="badge text-bg-danger">@Cheese.Price</span>
+            </h5>
 
-      <p class="card-text">@Cheese.Description</p>
+            <p class="card-text">@Cheese.Description</p>
 
-            <div class="d-flex align-items-center">
-                <select id="grams" class="form-select-sm m-2 p-2" style="width: 100px; height: 40px" aria-label="Default select example">
-                    <option value="100">100g</option>
-                    <option value="200">200g</option>
-                    <option value="300">300g</option>
-                    <option value="400">400g</option>
-                    <option value="500">500g</option>
-                </select>
-
-                <button class="btn btn-primary position-relative" type="submit" onclick="addToCart(); gramsCalc()">
-                    Add to cart
-                    <span id="amountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        0
-                        <span class="visually-hidden">unread messages</span>
-                    </span>
-                </button>
-
-                <script>
-                    var total_grams = 0;
-
-                    function gramsCalc() {
-                        var grams = parseInt(document.getElementById('grams').value);
-                        total_grams += grams;
-                        document.getElementById('amountBadge').innerText = total_grams;
-                    }
-                </script>
-
-            </div>
-
-
-      @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
+            <EditForm Model="quantity" OnSubmit="AddToCart">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <InputSelect class="form-select w-100" @bind-Value="quantity" required>
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                <option value="@i">@(i * 100)g</option>
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="col-lg-6 col-12 mt-lg-0 mt-1">
+                        <button class="btn btn-primary position-relative w-100">
+                            Add to cart
+                            @if (ShoppingCart.GetQuantity(Cheese) > 0)
+                            {
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    @(ShoppingCart.GetQuantity(Cheese) * 100)g
+                                    <span class="visually-hidden">@Cheese.Name in shopping cart</span>
+                                </span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
     </div>
-  </div>
 </div>
+
 
 <EditForm Model="quantity" OnSubmit="AddToCart">
 

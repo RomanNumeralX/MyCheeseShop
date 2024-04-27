@@ -7,38 +7,43 @@
 @inject NavigationManager NavigationManager
 
 <PageTitle>Home</PageTitle>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/app.css" />
+</head>
+    <h1>Cheese Shop</h1>
 
-<h1>Cheese Shop</h1>
-<a @onclick="GoToCart" class="btn btn-outline-dark"> Check Cart! </a>
-<div>
-    <input type="text" class="form-control" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
-</div>
+    <a @onclick="GoToCart" class="btn btn-outline-dark"> Check Cart! </a>
 
-@if (cheeses is null)
-{
-    <p> Cheese Shop Loading... </p>
-}
+    <div>
+        <input type="text" class="form-control" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+    </div>
 
-else if (!cheeses.Any())
-{
-    <p> No Cheese Found. :( </p>
-}
+<body>
 
-<div class="row">
-    @foreach (var cheese in FilteredCheeses)
+    @if (cheeses is null)
     {
-        <div class="col-md-3">
-            <StoreItem Cheese="cheese" />
-        </div>
+        <p> Cheese Shop Loading... </p>
     }
-</div>
 
+    else if (!cheeses.Any())
+    {
+        <p> No Cheese Found. :( </p>
+    }
 
+    <div class="row">
+        @foreach (var cheese in FilteredCheeses)
+        {
+            <div class="col-md-3">
+                <StoreItem Cheese="cheese" />
+            </div>
+        }
+        @if (!FilteredCheeses.Any())
+        {
+            <p>No cheeses found.</p>
+        }
+    </div>
 
-@if (!FilteredCheeses.Any())
-{
-    <p> No Cheese Found. :( </p>
-}
+</body>
 
 
 @code {

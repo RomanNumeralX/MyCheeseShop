@@ -5,7 +5,7 @@ namespace MyCheeseShop.Model
 
         public int Id { get; set; }
 
-        public Order order { get; set; }
+        public Order Order { get; set; }
 
         public Cheese Cheese { get; set; }
 
