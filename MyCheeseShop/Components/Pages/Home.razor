@@ -2,7 +2,11 @@
 @using MyCheeseShop.Model
 @using MyCheeseShop.Components
 @using MyCheeseShop.Context
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject CheeseProvider CheeseProvider
+@inject NavigationManager NavigationManager
+@inject ShoppingCart Shoppingcart
+@inject ProtectedSessionStorage ProtectedSessionStore
 
 <PageTitle>Home</PageTitle>
 
@@ -33,13 +37,48 @@ else if (!cheeses.Any())
     
 }
 
+<input type="text" class="form-control" placeholder="Search for cheese..." @bind="searchTerm" @bind:event="oninput">
+
+
 @code {
+    private string searchTerm = "";
     private IEnumerable<Cheese> cheeses;
+    private IEnumerable<Cheese> Cheeses
+    {
+        get
+        {
+            return cheeses.Where(GetSearchCriteria);
+        }
+        set
+        {
+            Cheeses = value;
+        }
+    }
+
+    private void GoToCart()
+    {
+        NavigationManager.NavigateTo("/cart");
+    }
+
 
     protected override async Task OnInitializedAsync()
     {
         cheeses = await CheeseProvider.GetAllCheesesAsync();
+        cheeses = cheeses;
+        ShoppingCart.OnCartUpdated += StateHasChanged;
+
     }
+
+    private bool GetSearchCriteria(Cheese cheese)
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm)) return true;
+
+        return cheese.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+            || cheese.Type.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+            || cheese.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+            || cheese.Strength.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
+    }
+
 }
 
 

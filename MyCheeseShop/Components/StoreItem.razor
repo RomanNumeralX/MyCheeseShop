@@ -1,11 +1,11 @@
 ﻿@using MyCheeseShop.Model
 @using MyCheeseShop.Components
 @using MyCheeseShop.Context
-@using Model
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject CheeseProvider CheeseProvider
 @inject ShoppingCart ShoppingCart
 @inject ProtectedSessionStorage ProtectedSessionStore
-
+@inject NavigationManager NavigationManager
 
 <div class="card-group">
     <div class="card m-1">

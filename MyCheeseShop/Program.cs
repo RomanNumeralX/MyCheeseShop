@@ -37,6 +37,8 @@ builder.Services.AddScoped<DatabaseSeeder>();
 
 builder.Services.AddScoped<CheeseProvider>();
 
+builder.Services.AddScoped<ShoppingCart>();
+
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
