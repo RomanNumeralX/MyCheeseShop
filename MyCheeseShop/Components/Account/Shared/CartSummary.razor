@@ -6,19 +6,35 @@
 @inject NavigationManager NavigationManager
 
 
-<a @onclick="GoToCheckout" class="btn btn-outline-primary"> Checkout </a>
-<a @onclick="GoToStore" class="btn btn-outline-primary"> TO STORE </a>
+<a @onclick="GoToCheckout" class="btn btn-outline-primary mb-2"> Checkout </a>
+<a @onclick="GoToStore" class="btn btn-outline-primary mb-2"> TO STORE </a>
 
-@foreach (var item in ShoppingCart.GetItems())
-{
-    var Cheese = item.Cheese;
-    var Quantity = item.Quantity;
-    
-    <p>@Cheese.Name</p>
-
-    <p>@Quantity</p>
-}
-
+<div class="row">
+    @foreach (var item in ShoppingCart.GetItems())
+    {
+        var cheese = item.Cheese;
+        <div class="col-md-12">
+            <div class="card mb-2" style="background-color:#D2B48C;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="imgs/@cheese.ImageUrl" class="card-img p-2" alt="@cheese.Name" style="border-radius:15px; height:200px; width:200px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                @cheese.Name 
+                            </h5>
+                            <p class="card-text">@cheese.Description</p>
+                            <h5>
+                                <span class="badge custom-price">@cheese.Price</span>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 
 @code {
