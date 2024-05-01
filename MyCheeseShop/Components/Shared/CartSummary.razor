@@ -6,8 +6,8 @@
 @inject NavigationManager NavigationManager
 
 
-<a @onclick="GoToCheckout" class="btn btn-outline-primary mb-2"> Checkout </a>
-<a @onclick="GoToStore" class="btn btn-outline-primary mb-2"> TO STORE </a>
+<a @onclick="GoToCheckout" class="btn btn-primary mb-2"> To checkout </a>
+<a @onclick="GoToStore" class="btn btn-primary mb-2"> To store </a>
 
 <div class="row">
     @foreach (var item in ShoppingCart.GetItems())
@@ -61,5 +61,18 @@
         NavigationManager.NavigateTo("/checkout");
     }
 
+    private void RemoveItem(CartItem item)
+    {
 
+    }
+
+    private void IncreaseQuantity(CartItem item)
+    {
+
+    }
+
+    private void DecreaseQuantity(CartItem item)
+    {
+        
+    }
 }

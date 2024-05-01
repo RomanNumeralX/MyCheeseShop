@@ -67,7 +67,7 @@ h1:focus {
 .custom-add-to-cart {
     width: 100px; /* Set width to 100px */
     height: 40px; /* Set height to 40px */
-    background-color: #007bff; /* Blue color for the button */
+    background-color: #FF9900; /* Blue color for the button */
     color: #ffffff; /* White text color */
     border: none; /* Remove border */
     border-radius: 4px; /* Add some border-radius for rounded corners */
@@ -82,7 +82,7 @@ h1:focus {
 
 .custom-price {
     background-color: #dc3545;
-    color : black;
+    color : white !important;
 }
 
 .text-black {
@@ -93,6 +93,11 @@ h1:focus {
 .text-badges-dark-grey {
     --bs-text-opacity: 1;
     color: rgb(51, 51, 51);
+}
+
+.custom-check-cart {
+    background-color: #7FB743;
+    color : white !important;
 }
 
 
