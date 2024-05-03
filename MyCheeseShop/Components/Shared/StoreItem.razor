@@ -7,12 +7,6 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
 
-<head>
-    <!-- Other head content -->
-    <link href="~/app.css" rel="stylesheet" />
-</head>
-
-
 <div class="card-group">
     <div class="card m-1" style="background-color:#D2B48C;">
         <img src="imgs/@Cheese.ImageUrl" class="card-img-top p-2" alt="@Cheese.Name" style="border-radius:15px;">
@@ -84,11 +78,6 @@
         </div>
     </div>
 </div>
-
-
-<EditForm Model="quantity" OnSubmit="AddToCart">
-
-</EditForm>
 
 @code {
 

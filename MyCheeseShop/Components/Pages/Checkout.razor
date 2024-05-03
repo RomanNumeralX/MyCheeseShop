@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using MyCheeseShop.Context
+
+@inject NavigationManager NavigationManager
+@attribute [Authorize]
+@page "/page"
+
+
+@code {
+
+    private async Task MakePayment()
+    {
+        await StimulatePayment();
+
+        await OrderProvider.CreateOrder(user, ShoppingCart.GetItems());
+        ShoppingCart.Clear();
+        NavigateManager.NavigateTo("/thank-you");
+    }
+
+    private sealed class PaymentDetails
+    {
+
+        [Required]
+        public string NameOnCard { get; set; }
+
+        [Required]
+        public string CardNumber { get; set; }
+
+        [Required]
+        public string ExpiryDate { get; set; }
+
+        [Required]
+        public string SecurityCode { get; set; }
+
+    }
+
+}

@@ -34,6 +34,31 @@ namespace MyCheeseShop.Model
             return _items; 
         }
 
+        public void RemoveItem(Cheese cheese)
+        {
+            // remove the cheese from the cart
+            _items.RemoveAll(item => item.Cheese.Id == cheese.Id);
+            OnCartUpdated?.Invoke();
+        }
+
+        public void RemoveItem(Cheese cheese, int quantity)
+        {
+            var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
+            if (item is not null)
+            {
+                item.Quantity -= quantity;
+                if (item.Quantity <= 0)
+                    _items.Remove(item);
+            }
+            OnCartUpdated?.Invoke();
+        }
+
+        public void SetItems(IEnumerable<CartItem> items)
+        {
+            _items = items.ToList();
+            OnCartUpdated?.Invoke();
+        }
+
 
     }
 }

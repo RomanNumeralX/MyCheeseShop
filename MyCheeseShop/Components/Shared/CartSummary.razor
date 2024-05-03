@@ -63,16 +63,17 @@
 
     private void RemoveItem(CartItem item)
     {
-
+        ShoppingCart.RemoveItem(item.Cheese);
     }
 
     private void IncreaseQuantity(CartItem item)
     {
-
+        ShoppingCart.AddItem(item.Cheese, 1);
     }
 
     private void DecreaseQuantity(CartItem item)
     {
-        
+        ShoppingCart.RemoveItem(item.Cheese, 1);
     }
+
 }

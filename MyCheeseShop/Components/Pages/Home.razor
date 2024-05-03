@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using MyCheeseShop.Components.Shared
 @using MyCheeseShop.Context
 @using MyCheeseShop.Model
 @using MyCheeseShop.Components
@@ -7,47 +8,40 @@
 @inject NavigationManager NavigationManager
 
 <PageTitle>Home</PageTitle>
-<head>
-    <link rel="stylesheet" type="text/css" href="~/app.css" />
-</head>
 
-<body style="background-color:#F5F5DC;">
+<h1>Cheese Shop</h1>
 
-    <h1>Cheese Shop</h1>
-
-    <a @onclick="GoToCart" class="btn btn-primary mb-2"> Check Cart! </a>
-
-  
-
-    <div>
-        <input type="text" class="form-control mb-2" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
-    </div>
+<a @onclick="GoToCart" class="btn btn-primary mb-2"> Check Cart! </a>
 
 
-    @if (cheeses is null)
+
+<div>
+    <input type="text" class="form-control mb-2" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+</div>
+
+
+@if (cheeses is null)
+{
+    <p> Cheese Shop Loading... </p>
+}
+
+else if (!cheeses.Any())
+{
+    <p> No Cheese Found. :( </p>
+}
+
+<div class="row">
+    @foreach (var cheese in cheeses)
     {
-        <p> Cheese Shop Loading... </p>
+        <div class="col-md-3">
+            <StoreItem Cheese="cheese" />
+        </div>
     }
-
-    else if (!cheeses.Any())
+    @if (!cheeses.Any())
     {
-        <p> No Cheese Found. :( </p>
+        <p>No cheeses found.</p>
     }
-
-    <div class="row">
-        @foreach (var cheese in FilteredCheeses)
-        {
-            <div class="col-md-3">
-                <StoreItem Cheese="cheese" />
-            </div>
-        }
-        @if (!FilteredCheeses.Any())
-        {
-            <p>No cheeses found.</p>
-        }
-    </div>
-
-</body>
+</div>
 
 
 @code {
