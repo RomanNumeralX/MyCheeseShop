@@ -22,6 +22,12 @@ namespace MyCheeseShop.Model
            OnCartUpdated?.Invoke(); 
         }
 
+        public void Clear()
+        {
+            _items.Clear();
+            OnCartUpdated?.Invoke();
+        }
+
         public int GetQuantity(Cheese cheese)
         {
             // return the quantity of the cheese in the cart

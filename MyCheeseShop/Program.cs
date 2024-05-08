@@ -37,6 +37,8 @@ builder.Services.AddScoped<DatabaseSeeder>();
 
 builder.Services.AddScoped<CheeseProvider>();
 
+builder.Services.AddScoped<OrderProvider>();
+
 builder.Services.AddScoped<ShoppingCart>();
 
 var app = builder.Build();
