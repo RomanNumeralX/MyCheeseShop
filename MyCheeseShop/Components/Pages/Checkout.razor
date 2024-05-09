@@ -1,25 +1,36 @@
 ﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using MyCheeseShop.Context
 @using System.ComponentModel.DataAnnotations
 @using MyCheeseShop.Model
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @inject OrderProvider OrderProvider
 @inject ShoppingCart ShoppingCart
 @inject NavigationManager NavigationManager
 @inject ProtectedSessionStorage ProtectedSessionStorage
+@inject OrderProvider OrderProvider
+@inject UserProvider UserProvider
 @attribute [Authorize]
 @page "/page"
 
 
 @code {
 
+    private User user;
+
     private async Task MakePayment()
     {
         await StimulatePayment();
 
-        await OrderProvider.CreateOrder(User, ShoppingCart.GetItems());
+        await OrderProvider.CreateOrder(user, ShoppingCart.GetItems());
         ShoppingCart.Clear();
-        NavigateManager.NavigateTo("/thank-you");
+        NavigationManager.NavigateTo("/thank-you");
+    }
+
+    private async Task StimulatePayment()
+    {
+
     }
 
     private sealed class PaymentDetails
@@ -37,6 +48,13 @@
         [Required]
         public string SecurityCode { get; set; }
 
+    }
+
+    protected async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var username = authState!.User!.Identity!.Name!;
+        user = UserProvider.GetUserByUsername(username)!;
     }
 
 }

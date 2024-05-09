@@ -41,6 +41,8 @@ builder.Services.AddScoped<OrderProvider>();
 
 builder.Services.AddScoped<ShoppingCart>();
 
+builder.Services.AddScoped<UserProvider>();
+
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
