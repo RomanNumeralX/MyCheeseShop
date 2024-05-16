@@ -23,19 +23,81 @@
         <h4 class="card-title">Register</h4>
 
         <EditForm OnValidSubmit="RegisterUser" Model="Model" FormName="registerForm">
+            <DataAnnotationsValidator/>
             <div class="row g-3">
+
                 <div class="col-md-12">
                     <label for="email" class="form-label">Email</label>
                     <InputText class="form-control" placeholder="Email" @bind-Value="Model.Email" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.FirstName)" />
+                    </div>
                 </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">First Name</label>
+                    <InputText type="text" class="form-control" placeholder="Confirm First Name" @bind-Value="Model.FirstName" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.FirstName)" />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Last Name</label>
+                    <InputText type="text" class="form-control" placeholder="Confirm Last Name" @bind-Value="Model.LastName" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.LastName)" />
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
                     <InputText type="password" class="form-control" placeholder="Password" @bind-Value="Model.Password" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.Password)" />
+                    </div>
                 </div>
+
                 <div class="col-md-6">
                     <label for="name" class="form-label">Confirm Password</label>
                     <InputText type="password" class="form-control" placeholder="Confirm Password" @bind-Value="Model.ConfirmPassword" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.ConfirmPassword)" />
+                    </div>
                 </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Address</label>
+                    <InputText type="text" class="form-control" placeholder="Enter Address" @bind-Value="Model.Address" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.Address)" />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">City</label>
+                    <InputText type="text" class="form-control" placeholder="Enter City" @bind-Value="Model.City" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.City)" />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Postcode</label>
+                    <InputText type="text" class="form-control" placeholder="Enter Postcode" @bind-Value="Model.PostCode" />
+
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.PostCode)" />
+                    </div>
+                </div>
+
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary w-100">Register</button>
                 </div>
