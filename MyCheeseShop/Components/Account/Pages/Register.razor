@@ -133,7 +133,6 @@
         };
 
         var result = await UserManager.CreateAsync(user, Model.Password);
-        await UserManager.AddToRoleAsync(user, "Customer");
 
         if (!result.Succeeded)
         {
@@ -141,6 +140,8 @@
             isError = true;
             return;
         }
+
+        await UserManager.AddToRoleAsync(user, "Customer");
 
         Logger.LogInformation("User created a new account with password.");
 
