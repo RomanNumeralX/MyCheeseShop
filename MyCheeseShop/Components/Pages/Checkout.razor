@@ -31,11 +31,20 @@
 
             <div class="row g-3">
 
-                <div class="col-md-12">
-                    <label for="nameoncard" class="form-label">Name On Card</label>
-                    <InputText class="form-control" placeholder="NameOnCard" @bind-Value="paymentDetails.NameOnCard" />
+                <div class="form-group">
+                    <label class="col-md-12">Name</label>
+                    <input class="form-control" value="@GetFormattedName(user)" disabled />
                 </div>
 
+                <div>
+                    <label class="col-md-12">Address</label>
+                    <input class="form-control" value="@GetFormattedAddress(user)" disabled />
+                </div>
+
+                <div class="col-md-12">
+                    <label for="nameoncard" class="form-label">Name On Card</label>
+                    <InputText class="form-control" placeholder="Name" @bind-Value="paymentDetails.NameOnCard" />
+                </div>
 
                 <div class="col-md-12">
                     <label for="cardnumber" class="form-label">Card Number</label>
@@ -56,11 +65,14 @@
                     <button type="submit" class="btn btn-primary w-100">Make Payment</button>
                 </div>
 
+                <div class="mod-md-2">
+                    <label for="total" class="form-label"></label>
+                </div>
+
             </div>
         </EditForm>
     </div>
 </div>
-
 
 @code {
 
@@ -99,10 +111,6 @@
 
     }
 
-    private void PaymentMade()
-    {
-        
-    }
 
     private string GetFormattedName(User user)
     {
