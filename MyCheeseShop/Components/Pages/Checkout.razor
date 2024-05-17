@@ -1,23 +1,72 @@
-﻿@using Microsoft.AspNetCore.Authorization
+﻿@page "/checkout"
 @using Microsoft.AspNetCore.Components.Authorization
+@using MyCheeseShop.Context 
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
-@using MyCheeseShop.Context
-@using System.ComponentModel.DataAnnotations
+@using MyCheeseShop.Components
+@using MyCheeseShop.Migrations
 @using MyCheeseShop.Model
+@using System.ComponentModel.DataAnnotations
+@using System.Text
+@using System.Text.Encodings.Web
+@using MyCheeseShop.Components.Account.Shared
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.WebUtilities
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject OrderProvider OrderProvider
 @inject ShoppingCart ShoppingCart
-@inject NavigationManager NavigationManager
-@inject ProtectedSessionStorage ProtectedSessionStorage
-@inject OrderProvider OrderProvider
 @inject UserProvider UserProvider
-@attribute [Authorize]
-@page "/checkout"
+@inject OrderProvider OrderProvider
+@inject NavigationManager NavigationManager
+@inject ProtectedSessionStorage ProtectedSessionStore
+@attribute [Authorize] 
+
+
+<div class="card">
+    <div class="card-body bg-light">
+        <h4 class="card-title">Checkout</h4>
+
+        <EditForm EditContext="editContext" OnValidSubmit="MakePayment">
+            <DataAnnotationsValidator />
+
+            <div class="row g-3">
+
+                <div class="col-md-12">
+                    <label for="nameoncard" class="form-label">Name On Card</label>
+                    <InputText class="form-control" placeholder="NameOnCard" @bind-Value="paymentDetails.NameOnCard" />
+                </div>
+
+
+                <div class="col-md-12">
+                    <label for="cardnumber" class="form-label">Card Number</label>
+                    <InputText class="form-control" placeholder="**** **** ****" @bind-Value="paymentDetails.CardNumber" />
+                </div>
+
+                <div class="col-md-12">
+                    <label for="expirydate" class="form-label">Expiry Date</label>
+                    <InputText class="form-control" placeholder="MM/YYYY" @bind-Value="paymentDetails.ExpiryDate" />
+                </div>
+
+                <div class="col-md-12">
+                    <label for="securitycode" class="form-label">Security Code</label>
+                    <InputText class="form-control" placeholder="****" @bind-Value="paymentDetails.SecurityCode" />
+                </div>
+
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Make Payment</button>
+                </div>
+
+            </div>
+        </EditForm>
+    </div>
+</div>
 
 
 @code {
 
     private User user;
+    private PaymentDetails paymentDetails;
+    private EditContext editContext;
 
     private async Task MakePayment()
     {
@@ -50,8 +99,26 @@
 
     }
 
-    protected async Task OnInitializedAsync()
+    private void PaymentMade()
     {
+        
+    }
+
+    private string GetFormattedName(User user)
+    {
+        return $"{user.FirstName} {user.LastName}";
+    }
+
+    private string GetFormattedAddress(User user)
+    {
+        return $"{user.Address}{Environment.NewLine}{user.City}{Environment.NewLine}{user.PostCode}";
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        paymentDetails = new PaymentDetails();
+        editContext = new EditContext(paymentDetails);
+
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var username = authState!.User!.Identity!.Name!;
         user = UserProvider.GetUserByUsername(username)!;
